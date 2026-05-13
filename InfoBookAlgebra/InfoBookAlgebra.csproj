@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InfoBookAlgebraCore\InfoBookAlgebraCore.csproj" />
+    <ProjectReference Include="..\InfoBookAlgebraCore\InfoBookAlgebra.Core.csproj" />
   </ItemGroup>
 
 </Project>
