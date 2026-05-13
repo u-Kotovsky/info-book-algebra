@@ -12,4 +12,5 @@
     <ProjectReference Include="..\InfoBookAlgebraCore\InfoBookAlgebra.Core.csproj" />
   </ItemGroup>
 
+  <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
 </Project>
