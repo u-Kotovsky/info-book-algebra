@@ -12,6 +12,10 @@ namespace InfoBookAlgebra
         {
             InitializeComponent();
 
+            // TODO: Load available themes from DB,
+            // list them all in page as clickable
+            // on click it will open a page that will load content for it.
+
             // test
 
             ApplicationContext? db = null;
@@ -28,14 +32,12 @@ namespace InfoBookAlgebra
 
                 db.Themes.AddRange(t1, t2);
                 db.ThemeContents.AddRange(c1, c2);
-                db.SaveChanges();
-                // todo: ensure entities have correct keys
-                MessageBox.Show("Saved data");
+                int result = db.SaveChanges();
+                MessageBox.Show("Saved data " + result);
 
                 var themes = db.Themes.ToList();
                 var themes_string = string.Join(", ", themes.Select(x => $"{x.Name}_{x.CreatedAt.ToShortTimeString()}_{x.Content?.Content}"));
                 MessageBox.Show("Theme list: " + themes_string);
-              
             }
             catch (Exception e)
             {
