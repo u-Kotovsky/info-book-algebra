@@ -18,13 +18,13 @@ namespace InfoBookAlgebra
 
             try 
             {
-                db = new();
+                db = new(true);
                 
                 var t1 = new Theme { Name = "Theme 1" };
                 var t2 = new Theme { Name = "Theme 2" };
 
-                var c1 = new ThemeContent { Content = "C 1" };
-                var c2 = new ThemeContent { Content = "C 2" };
+                var c1 = new ThemeContent { Content = "C 1", ThemeId = 1 };
+                var c2 = new ThemeContent { Content = "C 2", ThemeId = 2 };
 
                 db.Themes.AddRange(t1, t2);
                 db.ThemeContents.AddRange(c1, c2);

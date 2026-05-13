@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace InfoBookAlgebraCore
 {
@@ -12,8 +7,11 @@ namespace InfoBookAlgebraCore
         public DbSet<Theme> Themes { get; set; }
         public DbSet<ThemeContent> ThemeContents { get; set; }
 
-        public ApplicationContext()
+        private bool ForceMemoryOnly { get; set; }
+
+        public ApplicationContext(bool forceMemoryOnly = false)
         {
+            this.ForceMemoryOnly = forceMemoryOnly;
             // test
             Database.EnsureDeleted();
             Database.EnsureCreated();
@@ -21,7 +19,18 @@ namespace InfoBookAlgebraCore
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=algebra2;Username=postgres;Password=sa");
+            if (ForceMemoryOnly)
+            {
+                optionsBuilder.UseInMemoryDatabase("DevelopmentDb");
+            } 
+            else
+            {
+                // this is still development database, but for now doesnt matter
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=algebra2;Username=postgres;Password=sa");
+            }
+
+            // local data
+            //optionsBuilder.UseSqlite("data.sqlite");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
