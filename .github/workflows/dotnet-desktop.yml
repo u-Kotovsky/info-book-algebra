@@ -72,6 +72,9 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+    
+    - name: Install Windows App SDK workload
+      run: dotnet workload install windows-desktop-app-sdk
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
