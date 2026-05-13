@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoBookAlgebra", "InfoBookAlgebra\InfoBookAlgebra.csproj", "{933D0EAB-AC33-4E1A-88AB-4DFB16BF340D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfoBookAlgebraCore", "InfoBookAlgebraCore\InfoBookAlgebraCore.csproj", "{7EE97893-A874-4D8A-B039-E046A5A0E2FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{933D0EAB-AC33-4E1A-88AB-4DFB16BF340D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933D0EAB-AC33-4E1A-88AB-4DFB16BF340D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933D0EAB-AC33-4E1A-88AB-4DFB16BF340D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933D0EAB-AC33-4E1A-88AB-4DFB16BF340D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EE97893-A874-4D8A-B039-E046A5A0E2FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EE97893-A874-4D8A-B039-E046A5A0E2FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EE97893-A874-4D8A-B039-E046A5A0E2FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EE97893-A874-4D8A-B039-E046A5A0E2FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2EAE9386-5B30-4E7A-A588-057F90CE060E}
+	EndGlobalSection
+EndGlobal
