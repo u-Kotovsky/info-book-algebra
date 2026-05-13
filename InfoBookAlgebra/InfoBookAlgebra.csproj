@@ -9,8 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InfoBookAlgebraCore\InfoBookAlgebra.Core.csproj" />
+    <ProjectReference Include="..\InfoBookAlgebra.Core\InfoBookAlgebra.Core.csproj" />
   </ItemGroup>
-
-  <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
 </Project>

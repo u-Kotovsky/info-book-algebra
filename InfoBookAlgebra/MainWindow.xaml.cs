@@ -13,8 +13,13 @@ namespace InfoBookAlgebra
             InitializeComponent();
 
             // test
-            using (ApplicationContext db = new())
+
+            ApplicationContext? db = null;
+
+            try 
             {
+                db = new();
+                
                 var t1 = new Theme { Name = "Theme 1" };
                 var t2 = new Theme { Name = "Theme 2" };
 
@@ -30,6 +35,18 @@ namespace InfoBookAlgebra
                 var themes = db.Themes.ToList();
                 var themes_string = string.Join(", ", themes.Select(x => $"{x.Name}_{x.CreatedAt.ToShortTimeString()}_{x.Content?.Content}"));
                 MessageBox.Show("Theme list: " + themes_string);
+              
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString(), "Error", MessageBoxButton.OK);
+            }
+            finally
+            {
+                if (db != null)
+                {
+                    db.Dispose();
+                }
             }
         }
     }
