@@ -17,11 +17,22 @@ namespace InfoBookAlgebraCore
             if (_instance == null)
             {
                 _instance = new ApplicationContext();
+#if !THIS_IS_A_TEST 
+                // We do not want this to interfer with the tests. They have to be isolated process.
+                // Add default values
+                var theme1 = new Theme { Name = "Понятие алгебраической дроби" };
+                var theme2 = new Theme { Name = "Упрощение рациональных выражений" };
+                var theme3 = new Theme { Name = "Понятие квадратного корня" };
+
+                _instance.AddTheme(theme1);
+                _instance.AddTheme(theme2);
+                _instance.AddTheme(theme3);
+#endif
             }
 
             return _instance;
         }
-        #endregion
+#endregion
 
         private ApplicationContext(bool forceMemoryOnly = false)
         {

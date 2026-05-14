@@ -1,4 +1,6 @@
-﻿using InfoBookAlgebraCore;
+﻿#define THIS_IS_A_TEST
+
+using InfoBookAlgebraCore;
 
 namespace InfoBookAlgebra.Tests
 {
@@ -22,15 +24,15 @@ namespace InfoBookAlgebra.Tests
         }
 
         [Test]
-        public void Test_AddTheme_ReturnsOne()
+        public void Test_AddTheme_IsInList()
         {
             var theme = new Theme { Name = "MyTheme" };
 
             _context.AddTheme(theme, "Content for my theme");
 
-            var themes = _context.GetThemes();
+            var themes = _context.GetThemes().Count(x => x.Id == theme.Id);
 
-            Assert.That(themes.Count == 1, $"Theme count: {themes.Count}");
+            Assert.That(themes == 1, $"Theme count: {themes}");
         }
 
         [Test]

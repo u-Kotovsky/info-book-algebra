@@ -12,8 +12,15 @@ namespace InfoBookAlgebra
         private TableOfContents tableOfContents;
         private ContentPage contentPage;
 
+        private static MainWindow _instance;
+        public static MainWindow GetInstance()
+        {
+            return _instance;
+        }
+
         public MainWindow()
         {
+            _instance = this;
             InitializeComponent();
 
             // TODO: Load available themes from DB,
@@ -36,7 +43,7 @@ namespace InfoBookAlgebra
         {
             if (contentPage == null)
             {
-                tableOfContents = new TableOfContents();
+                contentPage = new ContentPage();
             }
             else
             {
@@ -45,7 +52,7 @@ namespace InfoBookAlgebra
 
             contentPage.Open(theme);
 
-            MainFrame.Navigate(tableOfContents);
+            MainFrame.Navigate(contentPage);
         }
     }
 }

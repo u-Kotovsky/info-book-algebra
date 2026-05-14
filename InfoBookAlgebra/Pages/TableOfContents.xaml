@@ -9,18 +9,10 @@
       Title="TableOfContents">
 
     <Grid>
-        <DataGrid x:Name="contentsGrid" AutoGenerateColumns="False">
-            <DataGrid.Items>
-                
-            </DataGrid.Items>
-
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock>123</TextBlock>
-                    </StackPanel>
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
+        <DataGrid x:Name="contentsGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="contentsGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Тема" Binding="{Binding Path=Name}"></DataGridTextColumn>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </Page>
