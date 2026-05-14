@@ -6,7 +6,7 @@ namespace InfoBookAlgebraCore
 {
     public class ThemeContent
     {
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         //[Required]
@@ -15,6 +15,7 @@ namespace InfoBookAlgebraCore
 
         public int ThemeId { get; set; }
 
-        public Theme? Theme { get; set; }
+        [ForeignKey(nameof(ThemeId))]
+        public Theme Theme { get; set; }
     }
 }

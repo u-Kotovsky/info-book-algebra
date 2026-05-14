@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using InfoBookAlgebra.Pages;
 using InfoBookAlgebraCore;
 
 namespace InfoBookAlgebra
@@ -8,6 +9,9 @@ namespace InfoBookAlgebra
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TableOfContents tableOfContents;
+        private ContentPage contentPage;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -16,40 +20,32 @@ namespace InfoBookAlgebra
             // list them all in page as clickable
             // on click it will open a page that will load content for it.
 
-            // test
+            OpenTableOfContents();
+        }
 
-            ApplicationContext? db = null;
-
-            try 
+        public void OpenTableOfContents()
+        {
+            if (tableOfContents == null)
             {
-                db = new(true);
-                
-                var t1 = new Theme { Name = "Theme 1" };
-                var t2 = new Theme { Name = "Theme 2" };
-
-                var c1 = new ThemeContent { Content = "C 1", ThemeId = 1 };
-                var c2 = new ThemeContent { Content = "C 2", ThemeId = 2 };
-
-                db.Themes.AddRange(t1, t2);
-                db.ThemeContents.AddRange(c1, c2);
-                int result = db.SaveChanges();
-                MessageBox.Show("Saved data " + result);
-
-                var themes = db.Themes.ToList();
-                var themes_string = string.Join(", ", themes.Select(x => $"{x.Name}_{x.CreatedAt.ToShortTimeString()}_{x.Content?.Content}"));
-                MessageBox.Show("Theme list: " + themes_string);
+                tableOfContents = new TableOfContents();
             }
-            catch (Exception e)
+            MainFrame.Navigate(tableOfContents);
+        }
+
+        public void OpenContentPage(Theme theme)
+        {
+            if (contentPage == null)
             {
-                MessageBox.Show(e.ToString(), "Error", MessageBoxButton.OK);
+                tableOfContents = new TableOfContents();
             }
-            finally
+            else
             {
-                if (db != null)
-                {
-                    db.Dispose();
-                }
+                contentPage.Reset();
             }
+
+            contentPage.Open(theme);
+
+            MainFrame.Navigate(tableOfContents);
         }
     }
 }

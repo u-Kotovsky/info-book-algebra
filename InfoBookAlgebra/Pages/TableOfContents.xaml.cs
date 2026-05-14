@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using InfoBookAlgebraCore;
 
 namespace InfoBookAlgebra.Pages
 {
@@ -20,10 +8,16 @@ namespace InfoBookAlgebra.Pages
     /// </summary>
     public partial class TableOfContents : Page
     {
+        private ApplicationContext _context;
+
         // Display list of available themes
         public TableOfContents()
         {
             InitializeComponent();
+
+            _context = ApplicationContext.GetInstance();
+
+            contentsGrid.ItemsSource = _context.GetThemes();
         }
     }
 }
