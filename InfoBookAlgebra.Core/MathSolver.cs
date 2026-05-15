@@ -19,7 +19,7 @@ namespace InfoBookAlgebra.Core
         {
             List<int> ints = [];
 
-            for (int i = 0; i < 100; i++)
+            for (int i = min; i < max; i++)
             {
                 // i % 9 = local index per horiz
                 ints.Add(i * i);
