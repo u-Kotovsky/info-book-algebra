@@ -1,5 +1,6 @@
 ﻿#define THIS_IS_A_TEST
 
+using InfoBookAlgebra.Core;
 using InfoBookAlgebraCore;
 
 namespace InfoBookAlgebra.Tests
