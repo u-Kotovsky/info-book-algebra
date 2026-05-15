@@ -14,7 +14,6 @@ namespace InfoBookAlgebra.Pages
         private Theme? _currentTheme;
         private ThemeContent? _currentThemeContent;
 
-        // Display selected theme content
         public ContentPage()
         {
             InitializeComponent();
@@ -22,8 +21,14 @@ namespace InfoBookAlgebra.Pages
             _context = ApplicationContext.GetInstance();
         }
 
+        /// <summary>
+        /// Opens current theme
+        /// </summary>
+        /// <param name="theme"></param>
         public void Open(Theme theme)
         {
+            Title = theme.Name;
+
             _currentTheme = theme;
             _currentThemeContent = _context.GetContentByTheme(_currentTheme);
 
@@ -31,24 +36,52 @@ namespace InfoBookAlgebra.Pages
             ContentLabel.Content = _currentThemeContent.Content;
         }
 
+        /// <summary>
+        /// Resets whole page
+        /// </summary>
         public void Reset()
         {
             TitleLabel.Content = string.Empty;
             ContentLabel.Content = string.Empty;
+
+            _currentTheme = null;
+            _currentThemeContent = null;
         }
 
+        /// <summary>
+        /// Opens previous theme if available.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_BackClick(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("TBD", "TBD", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             // TODO: check if there is available themes behind
+
+            if (true)
+            {
+                return;
+            }
 
             Reset();
 
 
         }
 
+        /// <summary>
+        /// Opens next theme if available.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_NextClick(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("TBD", "TBD", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             // TODO: check if there is available themes in front
+
+            if (true)
+            {
+                return;
+            }
 
             Reset();
 

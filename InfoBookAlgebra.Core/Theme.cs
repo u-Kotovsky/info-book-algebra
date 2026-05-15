@@ -7,11 +7,12 @@ namespace InfoBookAlgebraCore
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        [DeniedValues([null])]
         public string Name { get; set; }
 
-        public void OnSelect()
+        public Theme(string name)
         {
-            throw new Exception("YayI was selected " + Name);
+            Name = name;
         }
     }
 }

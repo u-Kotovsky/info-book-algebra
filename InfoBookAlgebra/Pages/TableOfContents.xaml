@@ -11,7 +11,7 @@
     <Grid>
         <DataGrid x:Name="contentsGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="contentsGrid_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Тема" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Тема" Binding="{Binding Path=Name}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

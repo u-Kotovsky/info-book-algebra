@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace InfoBookAlgebraCore
 {
@@ -9,13 +8,19 @@ namespace InfoBookAlgebraCore
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        //[Required]
-        //[MaxLength(65535)]
+        [DeniedValues([null])]
+        [MaxLength(65535)]
         public string Content { get; set; }
 
         public int ThemeId { get; set; }
 
         [ForeignKey(nameof(ThemeId))]
         public Theme Theme { get; set; }
+
+        public ThemeContent(string content, int themeId)
+        {
+            Content = content;
+            ThemeId = themeId;
+        }
     }
 }

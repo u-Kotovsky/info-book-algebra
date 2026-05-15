@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using InfoBookAlgebraCore;
 
 namespace InfoBookAlgebra.Pages
@@ -11,21 +10,23 @@ namespace InfoBookAlgebra.Pages
     {
         private ApplicationContext _context;
 
-        // Display list of available themes
         public TableOfContents()
         {
             InitializeComponent();
 
+            // Set current context instance
             _context = ApplicationContext.GetInstance();
 
+            // Read all themes and set them into datagrid
             contentsGrid.ItemsSource = _context.GetThemes();
         }
 
-        private void contentsGrid_Selected(object sender, System.Windows.RoutedEventArgs e)
-        {
-            MessageBox.Show(e.Source.GetType().Name);
-        }
-
+        /// <summary>
+        /// Opens selected theme in content page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /// <exception cref="Exception"></exception>
         private void contentsGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selected = contentsGrid.SelectedItem;

@@ -2,7 +2,10 @@
 
 namespace InfoBookAlgebraCore
 {
-    // Singleton technically
+    /// <summary>
+    /// A class that stores current Database context 
+    /// and handles basic requests.
+    /// </summary>
     public class ApplicationContext : DbContext
     {
         private DbSet<Theme> Themes { get; set; }
@@ -12,6 +15,10 @@ namespace InfoBookAlgebraCore
 
         #region Singleton
         private static ApplicationContext? _instance;
+        /// <summary>
+        /// Get active instance of ApplicationContext
+        /// </summary>
+        /// <returns></returns>
         public static ApplicationContext GetInstance()
         {
             if (_instance == null)
@@ -20,9 +27,9 @@ namespace InfoBookAlgebraCore
 #if !THIS_IS_A_TEST 
                 // We do not want this to interfer with the tests. They have to be isolated process.
                 // Add default values
-                var theme1 = new Theme { Name = "Понятие алгебраической дроби" };
-                var theme2 = new Theme { Name = "Упрощение рациональных выражений" };
-                var theme3 = new Theme { Name = "Понятие квадратного корня" };
+                var theme1 = new Theme ("Понятие алгебраической дроби");
+                var theme2 = new Theme ("Упрощение рациональных выражений");
+                var theme3 = new Theme ("Понятие квадратного корня");
 
                 _instance.AddTheme(theme1);
                 _instance.AddTheme(theme2);
@@ -36,8 +43,9 @@ namespace InfoBookAlgebraCore
 
         private ApplicationContext(bool forceMemoryOnly = false)
         {
-            this.ForceMemoryOnly = forceMemoryOnly;
-            // test
+            ForceMemoryOnly = forceMemoryOnly;
+
+            // tl;dr do not use in production, probably
             Database.EnsureDeleted();
             Database.EnsureCreated();
         }
@@ -55,32 +63,38 @@ namespace InfoBookAlgebraCore
                 optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=algebra2;Username=postgres;Password=sa");
             }
 
-            // local data
+            // local data?
             //optionsBuilder.UseSqlite("data.sqlite");
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            /*modelBuilder
-                .Entity<Theme>()
-                .HasOne(t => t.Content)
-                .WithOne(c => c.Theme)
-                .HasForeignKey<ThemeContent>(tc => tc.ThemeId);*/
         }
         #endregion
 
         #region Helpers
-
+        /// <summary>
+        /// Get current list of themes
+        /// </summary>
+        /// <returns></returns>
         public List<Theme> GetThemes()
         {
             return Themes.ToList();
         }
 
+        /// <summary>
+        /// Get content by selected theme
+        /// </summary>
+        /// <param name="theme"></param>
+        /// <returns></returns>
         public ThemeContent? GetContentByTheme(Theme theme)
         {
             return ThemeContents.Where(tc => tc.ThemeId == theme.Id).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Add theme to the list
+        /// </summary>
+        /// <param name="theme"></param>
+        /// <param name="content"></param>
+        /// <returns></returns>
+        /// <exception cref="NullReferenceException"></exception>
         public (Theme, ThemeContent) AddTheme(Theme theme, string content = "Content to be added")
         {
             if (theme == null)
@@ -104,21 +118,15 @@ namespace InfoBookAlgebraCore
             }
 
             Themes.Add(theme);
-            SaveChanges(); // Only after saving changes DB applies ID to the entity
+            SaveChanges(); // Only after saving changes DB applies generated ID to the entity
 
-            var themeContent = new ThemeContent { Content = content, ThemeId = theme.Id };
+            var themeContent = new ThemeContent(content, theme.Id);
             ThemeContents.Add(themeContent);
 
             SaveChanges();
 
             return (theme, themeContent); 
         }
-
-        public void SetThemeContent()
-        {
-
-        }
-
         #endregion
     }
 }
