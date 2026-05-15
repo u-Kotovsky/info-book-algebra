@@ -33,7 +33,8 @@ namespace InfoBookAlgebra.Pages
             _currentThemeContent = _context.GetContentByTheme(_currentTheme);
 
             TitleLabel.Content = _currentTheme.Name;
-            ContentLabel.Content = _currentThemeContent.Content;
+            //ContentLabel.Content = _currentThemeContent.Content;
+            ContentTextBox.Text = _currentThemeContent.Content;
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace InfoBookAlgebra.Pages
         public void Reset()
         {
             TitleLabel.Content = string.Empty;
-            ContentLabel.Content = string.Empty;
+            //ContentLabel.Content = string.Empty;
 
             _currentTheme = null;
             _currentThemeContent = null;

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:InfoBookAlgebra.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="TableOfContents">
+      Title="Содержание">
 
     <Grid>
         <DataGrid x:Name="contentsGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="contentsGrid_SelectionChanged">
