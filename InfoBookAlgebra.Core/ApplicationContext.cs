@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace InfoBookAlgebraCore
 {
@@ -16,6 +15,7 @@ namespace InfoBookAlgebraCore
 
         #region Singleton
         private static ApplicationContext? _instance;
+
         /// <summary>
         /// Get active instance of ApplicationContext
         /// </summary>
