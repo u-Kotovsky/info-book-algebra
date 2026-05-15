@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using InfoBookAlgebra.Core;
 using InfoBookAlgebra.Pages;
 using InfoBookAlgebraCore;
 
@@ -34,6 +35,8 @@ namespace InfoBookAlgebra
             InitializeComponent();
 
             OpenTableOfContents();
+
+            MessageBox.Show(string.Join(", ", MathSolver.GetSquareTable()));
         }
 
         #region Navigation stuff
