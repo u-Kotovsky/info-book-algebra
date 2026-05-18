@@ -38,16 +38,5 @@ namespace InfoBookAlgebra.Tests
 
 			Assert.That(value == 4, $"{index}.{value}");
 		}
-
-		[Test]
-		public void Test_GetSquareTable_At2ShouldBe4()
-		{
-			var table = MathSolver.GetSquareTable();
-			var index = 2;
-			var value = table[index];
-
-			Assert.That(value == 4, $"{index}.{value}");
-		}
-
 	}
 }
