@@ -6,28 +6,28 @@
       xmlns:local="clr-namespace:InfoBookAlgebra.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ContentPage">
+      Title="{Binding CurrentTheme.Name}">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-            <!--<RowDefinition Height="auto"></RowDefinition>-->
+            <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Label x:Name="TitleLabel" FontSize="24" FontStyle="Normal">title</Label>
+            <Label x:Name="TitleLabel" FontSize="24" FontStyle="Normal" 
+                   Content="{Binding Path=Title, Mode=OneWay}"/>
         </Grid>
         <Grid Grid.Row="1">
-            <!--<Label x:Name="ContentLabel">content</Label>-->
-            <TextBox x:Name="ContentTextBox" IsReadOnly="True" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Visible">e</TextBox>
+            <TextBox x:Name="ContentTextBox" IsReadOnly="True"
+                     TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Visible"
+                     Text="{Binding Path=Content, Mode=OneWay}"></TextBox>
         </Grid>
-        <!--<Grid Grid.Row="2">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Click="Button_BackClick">back</Button>
-            <Button Grid.Column="1" Click="Button_NextClick">next</Button>
-        </Grid>-->
+            <Button Grid.Column="0" Command="{Binding BackCommand}">Back</Button>
+        </Grid>
     </Grid>
 </Page>

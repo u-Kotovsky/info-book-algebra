@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="InfoBookAlgebra" Height="450" Width="500">
     <Grid>
-        <Frame x:Name="MainFrame"></Frame>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
     </Grid>
 </Window>

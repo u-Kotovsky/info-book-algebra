@@ -7,12 +7,29 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Содержание">
-
     <Grid>
-        <DataGrid x:Name="contentsGrid" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="contentsGrid_SelectionChanged">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0">Список доступных тем:</Label>
+        <ListBox Grid.Row="1" ItemsSource="{Binding Path=CurrentThemes}" Focusable="False">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <!-- Honestly this looks funny but if it works, it works -->
+                    <TextBlock>
+                        <Hyperlink Command="{Binding SelectThemeCommand}" CommandParameter="URI">
+                            <TextBlock Text="{Binding Path=Title}"/>
+                        </Hyperlink>
+                    </TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <!--<DataGrid ItemsSource="{Binding Path=CurrentThemes}" AutoGenerateColumns="True" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Тема" Binding="{Binding Path=Name}"/>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
     </Grid>
 </Page>
