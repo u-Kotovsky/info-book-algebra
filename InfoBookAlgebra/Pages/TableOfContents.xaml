@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0">Список доступных тем:</Label>
         <ListBox Grid.Row="1" ItemsSource="{Binding Path=CurrentThemes}" Focusable="False">
@@ -25,11 +26,13 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
-        <!--<DataGrid ItemsSource="{Binding Path=CurrentThemes}" AutoGenerateColumns="True" IsReadOnly="True">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Тема" Binding="{Binding Path=Name}"/>
-            </DataGrid.Columns>
-        </DataGrid>-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Command="{Binding GetSqrtTableCommand}">Таблица квадратов</Button>
+            <Button Grid.Column="1" Command="{Binding GetVietteSolverCommand}">Теорема виетта</Button>
+        </Grid>
     </Grid>
 </Page>

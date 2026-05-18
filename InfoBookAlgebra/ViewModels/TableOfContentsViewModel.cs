@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using InfoBookAlgebra.Core;
 using InfoBookAlgebra.Helpers;
 using InfoBookAlgebraCore;
 
@@ -23,6 +24,35 @@ namespace InfoBookAlgebra.Pages
             {
                 _currentThemes = value;
                 OnPropertyChanged(nameof(CurrentThemes));
+            }
+        }
+        #endregion
+
+        #region Commands
+        private RelayCommand? _getSqrtTableCommand;
+        public RelayCommand GetSqrtTableCommand
+        {
+            get
+            {
+                return _getSqrtTableCommand ??= new RelayCommand(obj =>
+                {
+                    MessageBox.Show(string.Join(", ", MathSolver.GetSquareTable()),
+                        "Таблица квадратов");
+                });
+            }
+        }
+
+        private VietteSolverWindow _vietteSolverWindow;
+        private RelayCommand? _getVietteSolverCommand;
+        public RelayCommand GetVietteSolverCommand
+        {
+            get
+            {
+                return _getVietteSolverCommand ??= new RelayCommand(obj =>
+                {
+                    _vietteSolverWindow ??= new VietteSolverWindow();
+                    _vietteSolverWindow.Show();
+                });
             }
         }
         #endregion

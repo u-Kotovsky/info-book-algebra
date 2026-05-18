@@ -1,0 +1,49 @@
+﻿<Window x:Class="InfoBookAlgebra.VietteSolverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InfoBookAlgebra"
+        mc:Ignorable="d"
+        Title="VietteSolverWindow" Height="200" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Column="0" VerticalAlignment="Center" Text="{Binding Path=A}"/>
+            <Label Grid.Column="1" VerticalAlignment="Center">x^2</Label>
+            <TextBox Grid.Column="2" VerticalAlignment="Center" Text="{Binding Path=B}"/>
+            <Label Grid.Column="3" VerticalAlignment="Center">x</Label>
+            <TextBox Grid.Column="4" VerticalAlignment="Center" Text="{Binding Path=C}"/>
+            <Label Grid.Column="5" VerticalAlignment="Center">= 0</Label>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Command="{Binding SolveCommand}">Solve</Button>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label VerticalAlignment="Center">r1 = </Label>
+                <Label Grid.Column="1" VerticalAlignment="Center">r2 = </Label>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

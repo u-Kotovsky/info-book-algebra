@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using InfoBookAlgebra.Core;
-using InfoBookAlgebra.Helpers;
+﻿using InfoBookAlgebra.Helpers;
 using InfoBookAlgebra.Pages;
 
 namespace InfoBookAlgebra
@@ -16,8 +14,6 @@ namespace InfoBookAlgebra
             _mainWindow = MainWindow.GetInstance();
 
             OpenTableOfContents();
-
-            MessageBox.Show(string.Join(", ", MathSolver.GetSquareTable()));
         }
 
         /// <summary>
