@@ -1,4 +1,4 @@
-﻿using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
 namespace InfoBookAlgebraCore
@@ -26,39 +26,25 @@ namespace InfoBookAlgebraCore
             if (_instance == null)
             {
                 _instance = new ApplicationContext();
-#if !THIS_IS_A_TEST 
-                // We do not want this to interfer with the tests. They have to be isolated process.
-                // Add default values
-
-                _instance.AddTheme(new Theme("Понятие алгебраической дроби"), "Алгебраическая дробь — это дробь, в которой числитель и знаменатель являются алгебраическими выражениями, то есть многочленами (а также одночленами). Дробная черта означает деление числителя на знаменатель. ");
-                _instance.AddTheme(new Theme("Упрощение рациональных выражений"), "Упрощение рациональных выражений — это применение тождественных преобразований с целью сделать запись выражения короче и удобнее для дальнейшей работы. Рациональное выражение — это алгебраическое выражение, не содержащее корней и включающее только действия сложения, вычитания, умножения, деления и возведения в степень. Рациональная дробь — это дробь, числитель и знаменатель которой — многочлены");
-                _instance.AddTheme(new Theme("Понятие квадратного корня"), "Квадратный корень — одно из фундаментальных понятий в математике, которое используется в вычислениях, геометрии, алгебре и других областях.");
-#if !RELEASE
-                var theme4 = new Theme("Длинная тема тест");
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < 128; i++)
-                {
-                    builder.Append($"{i} Very long content will be there");
-                }
-                _instance.AddTheme(theme4, builder.ToString());
-#endif
-#endif
             }
 
             return _instance;
         }
 #endregion
 
+        /// <summary>
+        /// Main constructor
+        /// </summary>
+        /// <param name="forceMemoryOnly"></param>
         private ApplicationContext(bool forceMemoryOnly = false)
         {
             ForceMemoryOnly = forceMemoryOnly;
-
-            // tl;dr do not use in production, probably
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
         }
 
-        #region Database Setup
+        /// <summary>
+        /// Configure database connection
+        /// </summary>
+        /// <param name="optionsBuilder"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (ForceMemoryOnly)
@@ -67,14 +53,9 @@ namespace InfoBookAlgebraCore
             } 
             else
             {
-                // this is still development database, but for now doesnt matter
                 optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=algebra2;Username=postgres;Password=sa");
             }
-
-            // local data?
-            //optionsBuilder.UseSqlite("data.sqlite");
         }
-        #endregion
 
         #region Helpers
         /// <summary>

@@ -1,5 +1,4 @@
-﻿using System.Windows;
-using InfoBookAlgebra.Helpers;
+﻿using InfoBookAlgebra.Helpers;
 using InfoBookAlgebraCore;
 
 namespace InfoBookAlgebra.Pages
@@ -56,6 +55,9 @@ namespace InfoBookAlgebra.Pages
 
         private MainWindow _mainWindow;
 
+        /// <summary>
+        /// Main constructor
+        /// </summary>
         public ContentPageViewModel()
         {
             _context = ApplicationContext.GetInstance();

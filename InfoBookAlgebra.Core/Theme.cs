@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InfoBookAlgebraCore
 {
+    [Table("themes")]
     public class Theme
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

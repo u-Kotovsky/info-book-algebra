@@ -9,6 +9,9 @@ namespace InfoBookAlgebra
 
         private MainWindow _mainWindow;
 
+        /// <summary>
+        /// Main constructor
+        /// </summary>
         public MainWindowViewModel()
         {
             _mainWindow = MainWindow.GetInstance();
