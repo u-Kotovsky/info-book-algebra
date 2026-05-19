@@ -92,8 +92,8 @@ dotnet build
 </figure>
 <br>
 <figure>
-    <img src="docs/4.png" alt="Меню навигации">
-    <figcaption>Рисунок 4 - Меню навигации</figcaption>
+    <img src="docs/4.png" alt="Тема 2">
+    <figcaption>Рисунок 4 - Тема 2</figcaption>
 </figure>
 
 ---
