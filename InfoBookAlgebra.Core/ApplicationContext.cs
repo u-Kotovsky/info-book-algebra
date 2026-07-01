@@ -20,11 +20,11 @@ namespace InfoBookAlgebraCore
         /// Get active instance of ApplicationContext
         /// </summary>
         /// <returns></returns>
-        public static ApplicationContext GetInstance()
+        public static ApplicationContext GetInstance(bool forceMemoryOnly = false)
         {
             if (_instance == null)
             {
-                _instance = new ApplicationContext();
+                _instance = new ApplicationContext(forceMemoryOnly);
             }
 
             return _instance;

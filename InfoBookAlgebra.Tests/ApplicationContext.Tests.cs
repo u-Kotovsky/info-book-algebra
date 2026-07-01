@@ -12,7 +12,7 @@ namespace InfoBookAlgebra.Tests
         [SetUp]
         public void Setup()
         {
-            _context = ApplicationContext.GetInstance();
+            _context = ApplicationContext.GetInstance(true);
         }
 
         [TearDown]
@@ -30,6 +30,8 @@ namespace InfoBookAlgebra.Tests
             var theme = new Theme("MyTheme");
 
             _context.AddTheme(theme, "Content for my theme");
+
+            _context.SaveChanges();
 
             var themes = _context.GetThemes().Count(x => x.Id == theme.Id);
 
